@@ -30,9 +30,31 @@ The authors present three approaches to within-lane normalization. The goal of e
 
 Implementations of the within-lane and between-lane methods used in the paper are available from the EDASeq package in R/Bioconductor.
 
-Data
+Data: What Samples?
 =============
-Yeast (SRA048710) and MAQC (SRA010153) datasets were analyzed using the new approaches. _Some discussion of the data background._ We seek to reproduce the analyses of the authors as described in the paper.
+- 14 **Saccharomyces cerevisiae** yeast samples were used to test the normalization techniques.
+Among the 14 samples, there are
+- Three different growth conditions: standard YP Glucose (YPD), Delft Glucose (Del) and YP Glucerol (Gly)
+- Two library preparation protocols: protocol 1 and protocol 2
+- Five flow cells: 428R1, 4328B, 61MKN, 247L, 62OAY
+
+
+Data: How Did We Prepare It?
+=============
+- Data were downloaded from NCBI's Sequence Read Archive (SRA), accession number SRA048710
+- First, data were aligned to the most current yeast reference genome using Bowtie and the RBowtie package
+- **Note:** the authors did not specify which reference genome they used for alignment
+- The aligned SAM files were converted to BAM format using the Rsamtools package
+- Finally, genes were filtered out if the max(average read count within growth conditions)$<$10 
+- This resulted in filtering of 423 genes, yielding 6,111 genes for analysis
+
+**We were unable to mirror exactly the counts the authors present, probably due to a different reference genome
+used for alignment and further filtering that was not described in the paper**
+
+Data: Reads per Lane, Before Mapping
+=============
+![ReadsBarplot](./Images/fig_S1a.pdf)
+
 
 Analyses Using New Methods
 ==========================
