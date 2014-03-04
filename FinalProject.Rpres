@@ -51,6 +51,10 @@ Data: How Did We Prepare It?
 **We were unable to mirror exactly the counts the authors present, probably due to a different reference genome
 used for alignment and further filtering that was not described in the paper**
 
+Data: Reads per Lane, Before Mapping
+=============
+![ReadsBarplot](./Images/fig_S1a.pdf)
+
 
 Analyses Using New Methods
 ==========================
