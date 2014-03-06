@@ -19,11 +19,7 @@ RNA-Seq: Overview
 
 2. cDNA sequenced into millions of short (25-100 bases) reads.
 
-<<<<<<< HEAD
 3. Reads mapped (aligned) to reference genome.
-=======
-2. **Global-scaling normalization** Counts are rescaled through values of a summary statistic within a GC-content stratum
->>>>>>> Rpres updates, data, images
 
 4. Read count for given gene ~ abundance of transcript in sample.
 
@@ -49,7 +45,8 @@ Methods for Within-lane Normalization
 The authors present three approaches to within-lane normalization. The goal of each method is to adjust for dependence of read counts on GC-content.
 
 - **Regression normalization.** Regress the counts on GC-content and subtract the loess fit from the counts to remove dependence.
-- **Global-scaling normalization.** 
+- **Global-scaling normalization** Counts are rescaled through values of a summary statistic within a GC-content stratum
+
 - **Full-quantile normalization.** Force the distribution of counts to be the same across bins of genes based on GC-content.
 
 Implementations of within-lane and between-lane methods: `EDASeq` package in Bioconductor.
@@ -123,12 +120,15 @@ Global-scaling Normalization
 ==========================
  **Intuition:** Bias due to GC-content can be corrected by comparison of expression levels within similar GC-content ranges
 
- **Specifics:** $y_j' = y_j - T(y_j' : j' \in k(j))) + T(y_1,...,y_j)$ for gene $j$ and summary statistic $T$. 
- 
- **Example:** 
- 
-```r
+ **Specifics:** On log-scale: $y_j' = y_j - T(y_{j'} : j' \in k(j))) + T(y_1,...,y_j)$ for gene j and summary statistic T. 
 
+0. Bin J genes into K bins based on GC-content
+
+1. Determine T among genes y_j' within GC-bin k(j) within lane
+
+2. Determine T among all genes within lane
+
+3. Original scale: $\exp(y_j') = \frac{exp(y_j)}{T(\exp(\overrightarrow{y_{j'}}))/T(\exp(\overrightarrow{y}))}$ 
 
 Full-quantile Normalization
 ==========================
