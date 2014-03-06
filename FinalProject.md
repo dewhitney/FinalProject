@@ -114,7 +114,7 @@ For gene $j = 1, \ldots, J$
 
 3. The normalized values are given by $y_j' = y_j - \hat{y}_j + T(y_1,\ldots,y_J)$
 
-**Note:** In `EDASeq` it is not possible to specify bandwidth for the loess regression or the statistic $T$, which is presumed to be the median (based on the paper).
+<small>**Note:** In `EDASeq` it is not possible to specify bandwidth for the loess regression or the statistic $T$, which is presumed to be the median.</small>
 
 Global-scaling Normalization
 ==========================
@@ -195,6 +195,10 @@ Results of Normalization Methods: Read Count
 GC-content differs across cultures but is similar for the same cultures.
 
 ![Fig1](Images/figure_1.png)
+
+Results of Normalization Methods: Per-lane read counts
+==========================
+![FigS2](Images/figure_s2_onlineData.png)
 
 
 Results of Normalization Methods: Log fold change
