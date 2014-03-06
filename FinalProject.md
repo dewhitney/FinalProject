@@ -170,12 +170,12 @@ _6_ | _1.3_ | _6_
 
 Evaluation of New Methods
 ==========================
-Bias, MSE, Type I error rate, p-value distributions.
-Should we talk about the null pseudo-datasets here?
+Bias, MSE, Type I error rate, p-value distributions are considered for differential expression (DE) analysis.
 
 Results of Normalization Methods: Read Count
 ==========================
 GC-content differs across cultures but is similar for the same cultures.
+
 ![Fig1](Images/figure_1.png)
 
 
@@ -188,8 +188,17 @@ different cultures from the same flow cell (right).
 Results of Normalization Methods: Normalized log fold change
 ==========================
 Normalized fold change vs GC-content using proposed normalization techniques.
+
+Loess-normalized log fold change
+==========================
 ![Fig3a](Images/figure_3a.png)
+
+GS-normalized log fold change
+==========================
 ![Fig3b](Images/figure_3b.png)
+
+FQ-normalized log fold change
+==========================
 ![Fig3c](Images/figure_3c.png)
 
 
@@ -201,5 +210,11 @@ Results of Normalization Methods: Bias, MSE
 Results of Normalization Methods: Type I error
 ==========================
 ![FigS12b](Images/figure_S12b.png)
+
+Results of Normalization Methods: Type I error
+==========================
 ![FigS12c](Images/figure_S12c.png)
+
+Results of Normalization Methods: Type I error
+==========================
 ![FigS12d](Images/figure_S12d.png)
