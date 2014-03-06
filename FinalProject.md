@@ -8,15 +8,38 @@ GC-content normalization for RNA-Seq data
 
 Introduction
 =============
-_Discuss RNA-seq methodology briefly. Redefine lanes._
+_RNA-Seq_ is a 'recent' high-throughput sequencing assay technique.
 
-_Why do we need to do within/between-lane normalizations?_
+Early supporters claimed that RNA-Seq "_can capture transcriptome dynamics across different tissues or conditions without sophisticated normalization of data sets."_ 
+(A bold claim!)
 
-The authors present three approaches to within-lane normalization. The goal of each method of normalization is to adjust for dependence of read counts on GC-content. The three approaches discussed are as follows.
+RNA-Seq: Overview
+============
+1. mRNA $\rightarrow$ cDNA fragments.
+
+2. cDNA sequenced into millions of short (25-100 bases) reads.
+
+3. Reads mapped (aligned) to reference genome.
+
+4. Read count for given gene ~ abundance of transcript in sample.
+
+RNA-Seq: Expected Sources of Read Count Bias
+============
+1. Gene length as well as transcript abundance.
+
+2. Variation between replicate lanes from differing sequencing depth.
+
+3. GC-content, which tends to be lane specific
+
+4. Mappability (how common sequence pattern is within genome)
+
+Methods for Within-lane Normalization
+=====================================
+The authors present three approaches to within-lane normalization. The goal of each method is to adjust for dependence of read counts on GC-content. The three approaches discussed are as follows.
 
 1. **Regression normalization.** Regress the counts on GC-content and subtract the loess fit from the counts to remove dependence.
 
-2. Global-scaling normalization
+2. **Global-scaling normalization.** 
 
 3. **Full-quantile normalization.** Force the distribution of counts to be the same across bins of genes based on GC-content.
 
