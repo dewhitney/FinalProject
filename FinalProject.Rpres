@@ -217,9 +217,12 @@ FQ-normalized log fold change
 ![Fig3c](Images/figure_3c.png)
 
 
-Results of Normalization Methods: Bias, MSE
+Results of Normalization Methods: Bias
 ==========================
 ![FigS9](Images/figure_S9.png)
+
+Results of Normalization Methods: MSE
+==========================
 ![FigS10](Images/figure_S10.png)
 
 Results of Normalization Methods: Type I error
