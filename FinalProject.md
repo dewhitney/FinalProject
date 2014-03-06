@@ -261,5 +261,6 @@ Authors providing their counts is a mixed blessing:
  - But what does this verify, given author-supplied data and authors' package?
  - Authors' documentation should be sufficient to replicate results exactly
  - Reference genome should be given explicitly
+ - Comparisons to CQN unfeasible; lack of details in papers
  - Do we know if there were issues beyond reference genome?
 
