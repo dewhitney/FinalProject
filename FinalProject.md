@@ -19,7 +19,11 @@ RNA-Seq: Overview
 
 2. cDNA sequenced into millions of short (25-100 bases) reads.
 
+<<<<<<< HEAD
 3. Reads mapped (aligned) to reference genome.
+=======
+2. **Global-scaling normalization** Counts are rescaled through values of a summary statistic within a GC-content stratum
+>>>>>>> Rpres updates, data, images
 
 4. Read count for given gene ~ abundance of transcript in sample.
 
@@ -114,6 +118,17 @@ For gene $j = 1, \ldots, J$
 3. The normalized values are given by $y_j' = y_j - \hat{y}_j + T(y_1,\ldots,y_J)$
 
 **Note:** In `EDASeq` it is not possible to specify bandwidth for the loess regression or the statistic $T$, which is presumed to be the median (based on the paper).
+
+Global-scaling Normalization
+==========================
+ **Intuition:** Bias due to GC-content can be corrected by comparison of expression levels within similar GC-content ranges
+
+ **Specifics:** $y_j' = y_j - T(y_j' : j' \in k(j))) + T(y_1,...,y_j)$ for gene $j$ and summary statistic $T$. 
+ 
+ **Example:** 
+ 
+```r
+
 
 Full-quantile Normalization
 ==========================
