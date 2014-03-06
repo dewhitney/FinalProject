@@ -8,10 +8,10 @@ GC-content normalization for RNA-Seq data
 
 Introduction
 =============
-_RNA-Seq_ is a 'recent' high-throughput sequencing assay technique.
+_RNA-Seq_ is a 'recent' high-throughput sequencing assay technology.
 
-Early supporters claimed that RNA-Seq "_can capture transcriptome dynamics across different tissues or conditions without sophisticated normalization of data sets."_ 
-(A bold claim!)
+- Wang, Gerstein, Snyder (2009) claimed that RNA-Seq "_can capture transcriptome dynamics across different tissues or conditions without sophisticated normalization of data sets._"
+- A bold claim!
 
 RNA-Seq: Overview
 ============
@@ -23,33 +23,43 @@ RNA-Seq: Overview
 
 4. Read count for given gene ~ abundance of transcript in sample.
 
-RNA-Seq: Expected Sources of Read Count Bias
+RNA-Seq: Expected Sources of Read Count Error
 ============
-1. Gene length as well as transcript abundance.
+- Gene length
+- Variation between replicate lanes from differing sequencing depth.
+- GC-content, which tends to be lane specific
+- Mappability (how common sequence pattern is within genome)
 
-2. Variation between replicate lanes from differing sequencing depth.
+RNA-Seq: Sophisticated Normalization
+==============
+We can identify 2 broad types of effect on read counts:
 
-3. GC-content, which tends to be lane specific
+1. Within-lane (gene length, GC-content, mappability)
 
-4. Mappability (how common sequence pattern is within genome)
+2. Between-lane (sequencing depth)
+
+Thus do normalization for both types of effect.
 
 Methods for Within-lane Normalization
 =====================================
-The authors present three approaches to within-lane normalization. The goal of each method is to adjust for dependence of read counts on GC-content. The three approaches discussed are as follows.
+The authors present three approaches to within-lane normalization. The goal of each method is to adjust for dependence of read counts on GC-content.
 
-1. **Regression normalization.** Regress the counts on GC-content and subtract the loess fit from the counts to remove dependence.
+- **Regression normalization.** Regress the counts on GC-content and subtract the loess fit from the counts to remove dependence.
+- **Global-scaling normalization.** 
+- **Full-quantile normalization.** Force the distribution of counts to be the same across bins of genes based on GC-content.
 
-2. **Global-scaling normalization.** 
+Implementations of within-lane and between-lane methods: `EDASeq` package in Bioconductor.
 
-3. **Full-quantile normalization.** Force the distribution of counts to be the same across bins of genes based on GC-content.
+Methods for Between-lane Normalization
+======================================
+The authors opt for **full-quantile** normalization method covered by Bullard, et al (2010).
 
-Implementations of the within-lane and between-lane methods used in the paper are available from the `EDASeq` package in R/Bioconductor.
 
 Data: What Samples?
 =============
 14 Saccharomyces cerevisiae **yeast** samples were used to test the normalization techniques.
 Among the 14 samples, there are
-- Three different growth conditions: standard YP Glucose (YPD), Delft Glucose (Del) and YP Glucerol (Gly)
+- Three different growth conditions: standard YP Glucose (YPD), Delft Glucose (Del) and YP Glycerol (Gly)
 - Two library preparation protocols: 1 and 2
 - Five flow cells: 428R1, 4328B, 61MKN, 247L, 62OAY
 
@@ -81,7 +91,6 @@ After completing the SRA downloads and running the alignment, we discovered the 
 All remaining analyses use read counts from **5,690 filtered genes**, as provided by the authors.
 
 
-
 Analyses Using New Methods
 ==========================
 To account for GC-content bias within lanes and technical differences between lanes, there are three steps to each analysis.
@@ -92,6 +101,19 @@ To account for GC-content bias within lanes and technical differences between la
 
 3. Perform differential expression analysis (package: `edgeR`).
 
+Regression Normalization
+========================
+For gene $j = 1, \ldots, J$
+
+0. Log-read counts $y_j$ are regressed on GC-content $x_j$ via loess robust local regression, obtaining $\hat{y}_j$
+
+1. Calculate the residuals $y_j - \hat{y}_j$
+
+2. Calculate a summary statistic such (e.g. the median), $T(y_1,\ldots,y_J)$
+
+3. The normalized values are given by $y_j' = y_j - \hat{y}_j + T(y_1,\ldots,y_J)$
+
+**Note:** In `EDASeq` it is not possible to specify bandwidth for the loess regression or the statistic $T$, which is presumed to be the median (based on the paper).
 
 Full-quantile Normalization
 ==========================
