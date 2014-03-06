@@ -185,7 +185,12 @@ _6_ | _1.3_ | _6_
 
 Evaluation of New Methods
 ==========================
-Bias, MSE, Type I error rate, p-value distributions are considered for differential expression (DE) analysis.
+Bias, MSE, Type I error rate are considered for differential expression (DE) analysis.
+ - We choose the 8 yeast cultures grown via YPD
+ - Group them into two groups of 4 lanes each
+ - Take the log-ratio of the normalized counts
+ - Test whether the counts vary between the two groups 
+ - **There should be no difference**
 
 Results of Normalization Methods: Read Count
 ==========================
