@@ -233,3 +233,27 @@ Results of Normalization Methods: Type I error
 Results of Normalization Methods: Type I error
 ==========================
 ![FigS12d](Images/figure_S12d.png)
+
+Conclusions
+==========================
+Why should we use the methods developed by Risso et al.?
+ - Easy to implement: `EDASeq` package for R available
+
+Better than the state-of-the-art? Better than Hansen, Brenner, Dudoit (2011)?
+ - Lower bias and MSE of expression fold-changed estimates
+ - Lower Type I error and better p-values when testing differential expression
+
+Bonus:
+ - Design and results indicate library preparation as source of GC bias
+
+
+
+Remarks on Reproducibility
+==========================
+Authors providing their counts is a mixed blessing:
+ - Able to reproduce many analyses exactly
+ - But what does this verify, given author-supplied data and authors' package?
+ - Authors' documentation should be sufficient to replicate results exactly
+ - Reference genome should be given explicitly
+ - Do we know if there were issues beyond reference genome?
+
