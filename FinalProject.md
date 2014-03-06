@@ -49,12 +49,12 @@ The authors present three approaches to within-lane normalization. The goal of e
 
 - **Full-quantile normalization.** Force the distribution of counts to be the same across bins of genes based on GC-content.
 
-Implementations of within-lane and between-lane methods: `EDASeq` package in Bioconductor.
 
 Methods for Between-lane Normalization
 ======================================
 The authors opt for **full-quantile** normalization method covered by Bullard, et al (2010).
 
+Implementations of within-lane and between-lane methods: `EDASeq` package in Bioconductor.
 
 Data: What Samples?
 =============
@@ -118,8 +118,6 @@ For gene $j = 1, \ldots, J$
 
 Global-scaling Normalization
 ==========================
- **Intuition:** Bias due to GC-content can be corrected by comparison of expression levels within similar GC-content ranges
-
  **Specifics:** On log-scale: $y_j' = y_j - T(y_{j'} : j' \in k(j))) + T(y_1,...,y_j)$ for gene j and summary statistic T. 
 
 0. Bin J genes into K bins based on GC-content
