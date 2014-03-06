@@ -209,7 +209,7 @@ different cultures from the same flow cell (right).
 
 Results of Normalization Methods: Normalized log fold change
 ==========================
-Normalized fold change vs GC-content using proposed normalization techniques.
+Normalized fold change vs GC-content using proposed within-lane normalization techniques.
 
 Loess-normalized log fold change
 ==========================
