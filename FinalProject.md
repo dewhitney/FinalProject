@@ -6,9 +6,6 @@ GC-content normalization for RNA-Seq data
 **Group:** Jun Hwang, Caitlin McHugh, David Whitney.
 
 
-
-
-
 Introduction
 =============
 _Discuss RNA-seq methodology briefly. Redefine lanes._
