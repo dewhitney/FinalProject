@@ -6,13 +6,8 @@ GC-content normalization for RNA-Seq data
 **Group:** Jun Hwang, Caitlin McHugh, David Whitney.
 
 
-```{r, echo=FALSE, cache=TRUE, background=TRUE}
-#source("http://bioconductor.org/biocLite.R")
-#biocLite(c("SRAdb","EDASeq","edgeR"))
-#library(SRAdb)
-#library(EDASeq)
-#library(edgeR)
-```
+
+
 
 Introduction
 =============
